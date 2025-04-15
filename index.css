@@ -8,11 +8,11 @@ body {
 #centeredContainer {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 #downloadPdf{
-    background-color: rgb(180, 36, 36); /* Vert élégant */
+    background-color: rgb(180, 36, 36);
     color: white;
     border: none;
     padding: 12px 24px;

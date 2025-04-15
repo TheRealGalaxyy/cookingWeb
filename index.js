@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const midiRow = document.getElementById('midi');
     const soirRow = document.getElementById('soir');
+    const title = document.getElementById('title');
     const generateWeekButton = document.getElementById('generateWeek');
     const downloadButton = document.getElementById('downloadPdf');
 
@@ -113,10 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Fonction pour obtenir les dates de la semaine actuelle sans librairie externe
     function getCurrentWeekDates() {
         const today = new Date();
-        const monday = today.getDate() - today.getDay() + 1; // Lundi de la semaine
+        const monday = today.getDate() - today.getDay() + 1;
         const week = [];
     
         for (let i = 0; i < 7; i++) {
@@ -127,18 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return week;
     }
 
+    const semaineActuelle = getCurrentWeekDates();
+    title.textContent = "Menu de la semaine du " + semaineActuelle[0] + " au " + semaineActuelle[6];
+
     generateWeekButton.addEventListener('click', generateWeekMeals);
 
     downloadButton.addEventListener('click', () => {
-        const element = document.querySelector('table');
-        const semaineActuelle = getCurrentWeekDates();
+        const element = document.getElementById('pdfContent');
         const filename = "repas_"+semaineActuelle[0]+"-"+semaineActuelle[6]+".pdf";
         const opt = {
             margin:       0.5,
             filename:     filename,
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' }
+            jsPDF:        { unit: 'in', format: 'a5', orientation: 'landscape' }
         };
         html2pdf().set(opt).from(element).save();
     });

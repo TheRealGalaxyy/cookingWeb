@@ -11,35 +11,37 @@
 </head>
 <body>
 
-    <h1 style="text-align: center;">Plat de la semaine</h1>
-    
+    <div id="pdfContent">
+        <h1 id="title" style="text-align: center;"></h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Heure</th>
+                    <th>Lundi</th>
+                    <th>Mardi</th>
+                    <th>Mercredi</th>
+                    <th>Jeudi</th>
+                    <th>Vendredi</th>
+                    <th>Samedi</th>
+                    <th>Dimanche</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="midi">
+                    <td><b>12:00</b></td>
+                </tr>
+                <tr id="soir">
+                    <td><b>19:00</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <div id="centeredContainer">
         <button id="generateWeek">Generer les plats</button>
         <button id="downloadPdf">Télécharger en PDF</button>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Heure</th>
-                <th>Lundi</th>
-                <th>Mardi</th>
-                <th>Mercredi</th>
-                <th>Jeudi</th>
-                <th>Vendredi</th>
-                <th>Samedi</th>
-                <th>Dimanche</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="midi">
-                <td><b>12:00</b></td>
-            </tr>
-            <tr id="soir">
-                <td><b>19:00</b></td>
-            </tr>
-        </tbody>
-    </table>
 
     <div id="popup" style="display:none">
         <div id="popupContent">
@@ -49,6 +51,7 @@
             <button id="closePopup">Annuler</button>
         </div>
     </div>    
+
     
 </body>
 </html>
