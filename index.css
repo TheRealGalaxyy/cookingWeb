@@ -1,0 +1,49 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    font : normal 16px/1.5 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+    background-color: #2E8B57; /* Vert élégant */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
+  }
+
+button:hover {
+    background-color: #3CB371; /* Un peu plus clair au survol */
+    transform: translateY(-2px);
+  }
+  
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+  
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
