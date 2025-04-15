@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             soirMeals = shuffledMeals.slice(7, 14);
 
             // Clear and reset rows
-            midiRow.innerHTML = '<td>12:00</td>';
-            soirRow.innerHTML = '<td>19:00</td>';
+            midiRow.innerHTML = '<td><b>12:00</b></td>';
+            soirRow.innerHTML = '<td><b>19:00</b></td>';
 
             midiMeals.forEach((meal, index) => {
                 midiRow.appendChild(createMealCell(meal, 'midi', index));
