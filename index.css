@@ -11,7 +11,7 @@ body {
     margin-bottom: 20px;
 }
 
-#generateWeek {
+#generateWeek , #changeMeal {
     background-color: #2E8B57; /* Vert élégant */
     color: white;
     border: none;
@@ -23,12 +23,56 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
-#generateWeek:hover {
+#generateWeek:hover , #changeMeal:hover {
     background-color: #3CB371; /* Un peu plus clair au survol */
     transform: translateY(-2px);
   }
   
-#generateWeek:active {
+#generateWeek:active , #changeMeal:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#removeMeal{
+    background-color: rgb(180, 36, 36); /* Vert élégant */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+#removeMeal:hover{
+    background-color: #b44141; /* Un peu plus clair au survol */
+    transform: translateY(-2px);
+  }
+  
+#removeMeal:active , #changeMeal:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#closePopup{
+    background-color: rgb(197, 110, 29); /* Vert élégant */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+#closePopup:hover{
+    background-color: #eba336; /* Un peu plus clair au survol */
+    transform: translateY(-2px);
+  }
+  
+#closePopup:active , #changeMeal:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -55,4 +99,23 @@ th {
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#popupContent {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
 }

@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         td.title = 'Clique pour changer ce plat';
 
         td.addEventListener('click', () => {
-            replaceSingleMeal(rowType, index, td);
-        });
+            showPopup(rowType, index, td);
+        });        
 
         return td;
     }
@@ -83,6 +83,34 @@ document.addEventListener('DOMContentLoaded', () => {
             soirMeals[index] = newMeal;
         }
     }
+
+    function showPopup(rowType, index, tdElement) {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+    
+        const changeBtn = document.getElementById('changeMeal');
+        const removeBtn = document.getElementById('removeMeal');
+        const closeBtn = document.getElementById('closePopup');
+    
+        changeBtn.onclick = () => {
+            replaceSingleMeal(rowType, index, tdElement);
+            popup.style.display = 'none';
+        };
+    
+        removeBtn.onclick = () => {
+            tdElement.textContent = '';
+            if (rowType === 'midi') {
+                midiMeals[index] = '';
+            } else {
+                soirMeals[index] = '';
+            }
+            popup.style.display = 'none';
+        };
+    
+        closeBtn.onclick = () => {
+            popup.style.display = 'none';
+        };
+    }    
 
     generateWeekButton.addEventListener('click', generateWeekMeals);
 });
