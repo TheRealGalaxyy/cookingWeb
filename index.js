@@ -11,25 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchMealsFromDatabase() {
         return [
-            "Spaghetti Bolognese", "Poulet Curry", "Salade César", "Pizza Margherita", "Sushi",
-            "Tacos", "Soupe Pho", "Ratatouille", "Lasagnes", "Burger", "Quiche Lorraine", "Pad Thaï",
+            "Pâtes Bolognese", "Poulet Curry", "Pizza Margherita",
+            "Tacos","Ratatouille", "Lasagnes", "Burger", "Quiche Lorraine",
             "Couscous", "Chili Con Carne", "Gratin Dauphinois", "Boeuf Bourguignon", "Blanquette de Veau",
-            "Ramen", "Choucroute", "Moussaka", "Paëlla", "Risotto aux champignons", "Gnocchis à la crème",
-            "Bibimbap", "Gyros", "Fish and Chips", "Steak Frites", "Gratin de courgettes", "Wok de légumes",
-            "Soupe à l'oignon", "Croque-Monsieur", "Falafel", "Gaspacho", "Tajine d'agneau", "Kebab",
-            "Bouillabaisse", "Ceviche", "Tartiflette", "Hachis Parmentier", "Pâtes au pesto", "Pâtes carbonara",
-            "Riz cantonais", "Poulet basquaise", "Canard à l’orange", "Côte de bœuf", "Nuggets maison",
-            "Pizza 4 fromages", "Clafoutis salé", "Gratin de pâtes", "Saucisse lentilles", "Gâteau de pommes de terre",
-            "Omelette aux fines herbes", "Poke bowl", "Mac and cheese", "Tartare de saumon", "Cordon bleu",
-            "Brochettes de poulet", "Chili sin carne", "Galette de sarrasin", "Soupe miso", "Pâtes bolo végétarienne",
-            "Tarte à la tomate", "Soupe de potiron", "Curry de légumes", "Poulet rôti", "Gratin d’aubergines",
-            "Tartine chèvre-miel", "Pizza orientale", "Salade grecque", "Naan au fromage", "Bruschetta",
-            "Lasagnes végétariennes", "Polenta crémeuse", "Goulash", "Enchiladas", "Riz pilaf", "Tarte aux poireaux",
-            "Couscous végétarien", "Riz au lait salé", "Frittata", "Soupe de lentilles", "Wok de crevettes",
-            "Gratin de chou-fleur", "Poulet au miel", "Sauté de porc au caramel", "Poisson pané maison",
-            "Salade de pâtes", "Pizza calzone", "Gratin de patate douce", "Tofu sauce soja", "Curry coco crevettes",
-            "Burger végétarien", "Tagliatelles au saumon", "Buddha bowl", "Wraps au poulet", "Gratin savoyard",
-            "Pizza aux légumes grillés", "Tian de légumes", "Soupe de pois cassés", "Curry japonais", "Raviolis chinois"
+            "Gnocchis", "Steak Frites","Tartiflette", "Hachis Parmentier", "Pâtes carbonara",
+            "Riz cantonais","Nuggets de poulet","Gratin de pâtes", "Saucisse lentilles",
+            "Mac and cheese", "Cordon bleu","Barbecue","Poulet rôti","Polenta","Riz pilaf",
+            "Soupe de lentilles","Wraps au poulet", "Ramen", "Pâtes Steak", "Riz Steak","Patate Steak","Raclette",
+            "Barbecue"
         ];
     }
 
