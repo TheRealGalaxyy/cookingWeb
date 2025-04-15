@@ -5,10 +5,36 @@ body {
     font : normal 16px/1.5 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#buttonContainer {
+#centeredContainer {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+#downloadPdf{
+    background-color: rgb(180, 36, 36); /* Vert élégant */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+#downloadPdf:hover{
+    background-color: #b44141; /* Un peu plus clair au survol */
+    transform: translateY(-2px);
+  }
+  
+#downloadPdf:active , #changeMeal:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#generateWeek {
+    margin-right: 20px;
 }
 
 #generateWeek , #changeMeal {

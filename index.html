@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/dist/date-fns.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="index.js"></script>
     <title>Plat de la semaine</title>
 </head>
 <body>
-    <h1>Plat de la semaine</h1>
-    <div id="buttonContainer">
+
+    <h1 style="text-align: center;">Plat de la semaine</h1>
+    
+    <div id="centeredContainer">
         <button id="generateWeek">Generer les plats</button>
+        <button id="downloadPdf">Télécharger en PDF</button>
     </div>
+
     <table>
         <thead>
             <tr>

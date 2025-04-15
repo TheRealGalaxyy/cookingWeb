@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const midiRow = document.getElementById('midi');
     const soirRow = document.getElementById('soir');
     const generateWeekButton = document.getElementById('generateWeek');
+    const downloadButton = document.getElementById('downloadPdf');
 
     let allMeals = [];
     let midiMeals = [];
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "Salade de pâtes", "Pizza calzone", "Gratin de patate douce", "Tofu sauce soja", "Curry coco crevettes",
             "Burger végétarien", "Tagliatelles au saumon", "Buddha bowl", "Wraps au poulet", "Gratin savoyard",
             "Pizza aux légumes grillés", "Tian de légumes", "Soupe de pois cassés", "Curry japonais", "Raviolis chinois"
-          ];
+        ];
     }
 
     function createMealCell(meal, rowType, index) {
@@ -110,7 +111,35 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtn.onclick = () => {
             popup.style.display = 'none';
         };
-    }    
+    }
+
+    // Fonction pour obtenir les dates de la semaine actuelle sans librairie externe
+    function getCurrentWeekDates() {
+        const today = new Date();
+        const monday = today.getDate() - today.getDay() + 1; // Lundi de la semaine
+        const week = [];
+    
+        for (let i = 0; i < 7; i++) {
+            const day = new Date(today.setDate(monday + i));
+            week.push((day.getDate() < 10 ? '0' : '') + day.getDate() + '/' + (day.getMonth() + 1 < 10 ? '0' : '') + (day.getMonth() + 1) + '/' + day.getFullYear());
+        }
+    
+        return week;
+    }
 
     generateWeekButton.addEventListener('click', generateWeekMeals);
+
+    downloadButton.addEventListener('click', () => {
+        const element = document.querySelector('table');
+        const semaineActuelle = getCurrentWeekDates();
+        const filename = "repas_"+semaineActuelle[0]+"-"+semaineActuelle[6]+".pdf";
+        const opt = {
+            margin:       0.5,
+            filename:     filename,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' }
+        };
+        html2pdf().set(opt).from(element).save();
+    });
 });
