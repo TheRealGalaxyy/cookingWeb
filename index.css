@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     font : normal 16px/1.5 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: linear-gradient(to right,#9796f0, #fbc7d4);
 }
 
 #centeredContainer {
@@ -102,18 +103,32 @@ body {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-  
+
+h1{
+    text-align: center;
+    font-size: 2.5em;
+    color: #000000;
+    margin-bottom: 20px;
+}
 
 table {
     width: 100%;
+    max-width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
     border-collapse: collapse;
-}
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    backdrop-filter: blur(10px);
+  }
+  
 
-th, td {
-    border: 1px solid #ddd;
+  th, td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 12px;
     text-align: center;
-    padding: 8px;
-}
+  }
+  
 
 td:hover{
     background-color: #d8cbca;
@@ -125,6 +140,10 @@ th {
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
 }
 
 #popup {
@@ -145,3 +164,45 @@ tr:nth-child(even) {
     border-radius: 10px;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    table {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+    }
+  
+    thead {
+      display: none; /* On masque l’en-tête pour simplifier */
+    }
+  
+    tbody {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    tr {
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+  
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+    }
+  
+    td:first-child {
+      font-weight: bold;
+      color: #333;
+      border-bottom: none;
+    }
+  }
+  

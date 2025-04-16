@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filename:     filename,
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'a5', orientation: 'landscape' }
+            jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' }
         };
         html2pdf().set(opt).from(element).save();
     });
