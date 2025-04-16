@@ -16,28 +16,26 @@
 
         <div class="table-responsive">
             <table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Heure</th>
-                            <th>Lundi</th>
-                            <th>Mardi</th>
-                            <th>Mercredi</th>
-                            <th>Jeudi</th>
-                            <th>Vendredi</th>
-                            <th>Samedi</th>
-                            <th>Dimanche</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="midi">
-                            <td><b>12:00</b></td>
-                        </tr>
-                        <tr id="soir">
-                            <td><b>19:00</b></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <thead>
+                    <tr>
+                        <th>Heure</th>
+                        <th>Lundi</th>
+                        <th>Mardi</th>
+                        <th>Mercredi</th>
+                        <th>Jeudi</th>
+                        <th>Vendredi</th>
+                        <th>Samedi</th>
+                        <th>Dimanche</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="midi">
+                        <td><b>12:00</b></td>
+                    </tr>
+                    <tr id="soir">
+                        <td><b>19:00</b></td>
+                    </tr>
+                </tbody>
             </table>
           </div>
     </div>
@@ -54,7 +52,24 @@
             <button id="removeMeal">Supprimer le plat</button>
             <button id="closePopup">Annuler</button>
         </div>
-    </div> 
+    </div>
+
+    <div id="popup2" style="display:none">
+        <div id="popup2Content">
+            <p>Choisissez une option :</p>
+            <div>
+                <button id="randomMeal">Plat Aléatoire</button>
+            </div>
+            <br />
+            <div>
+                <select id="mealSelect">
+                </select>
+                <button id="confirmChangeMeal">Confirmer le changement</button>
+            </div>
+            <br />
+            <button id="closePopup2">Annuler</button>
+        </div>
+    </div>
     
 </body>
 </html>

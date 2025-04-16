@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = document.getElementById('title');
     const generateWeekButton = document.getElementById('generateWeek');
     const downloadButton = document.getElementById('downloadPdf');
+    const popup2 = document.getElementById('popup2');
+    const mealSelect = document.getElementById('mealSelect');
+    const randomMealBtn = document.getElementById('randomMeal');
+    const confirmChangeMealBtn = document.getElementById('confirmChangeMeal');
+    const closePopup2Btn = document.getElementById('closePopup2');
 
     let allMeals = [];
     let midiMeals = [];
@@ -92,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeBtn = document.getElementById('closePopup');
 
         changeBtn.onclick = () => {
-            replaceSingleMeal(rowType, index, tdElement);
+            showPopup2(rowType, index, tdElement);
             popup.style.display = 'none';
         };
 
@@ -106,8 +111,39 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    function replaceSingleMeal(rowType, index, tdElement) {
-        const newMeal = allMeals[Math.floor(Math.random() * allMeals.length)];
+    function showPopup2(rowType, index, tdElement) {
+        const availableMeals = allMeals.filter(meal => {
+            return !midiMeals.includes(meal) && !soirMeals.includes(meal);
+        });
+
+        mealSelect.innerHTML = '';
+        availableMeals.forEach(meal => {
+            const option = document.createElement('option');
+            option.value = meal;
+            option.textContent = meal;
+            mealSelect.appendChild(option);
+        });
+
+        popup2.style.display = 'flex';
+
+        randomMealBtn.onclick = () => {
+            const randomMeal = allMeals[Math.floor(Math.random() * allMeals.length)];
+            replaceSingleMeal(rowType, index, tdElement, randomMeal);
+            popup2.style.display = 'none';
+        };
+
+        confirmChangeMealBtn.onclick = () => {
+            const selectedMeal = mealSelect.value;
+            replaceSingleMeal(rowType, index, tdElement, selectedMeal);
+            popup2.style.display = 'none';
+        };
+
+        closePopup2Btn.onclick = () => {
+            popup2.style.display = 'none';
+        };
+    }
+
+    function replaceSingleMeal(rowType, index, tdElement, newMeal) {
         tdElement.textContent = newMeal;
 
         if (rowType === 'midi') {
@@ -169,18 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialisation
     const semaineActuelle = getCurrentWeekDates();
     title.innerHTML = "Menu de la semaine : <br/>" + semaineActuelle[0] + "-" + semaineActuelle[6];
 
-    // Charger les données
     initializeMeals().then(() => {
         updateMealsDisplay();
         completedDays();
-        }
-    );
-    
-    // Événements
+    });
+
     generateWeekButton.addEventListener('click', generateWeekMeals);
 
     downloadButton.addEventListener('click', () => {
@@ -203,19 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 useCORS: true,
                 allowTaint: true
             },
-            jsPDF: { 
-                unit: 'mm', 
-                format: 'a4', 
-                orientation: 'portrait'
-            }
+            jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
         };
-    
-        setTimeout(() => {
-            html2pdf()
-                .set(opt)
-                .from(element)
-                .save()
-                .catch(err => console.error("Erreur de génération PDF :", err));
-        }, 200);
+
+        html2pdf().from(element).set(opt).save();
     });
 });
