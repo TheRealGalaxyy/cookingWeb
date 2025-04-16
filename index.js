@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             midiMeals = shuffledMeals.slice(0, 7);
             soirMeals = shuffledMeals.slice(7, 14);
 
-            // Clear and reset rows
             midiRow.innerHTML = '<td><b>12:00</b></td>';
             soirRow.innerHTML = '<td><b>19:00</b></td>';
 
@@ -54,10 +53,37 @@ document.addEventListener('DOMContentLoaded', () => {
             soirMeals.forEach((meal, index) => {
                 soirRow.appendChild(createMealCell(meal, 'soir', index));
             });
+
+            localStorage.setItem('midiMeals', JSON.stringify(midiMeals));
+            localStorage.setItem('soirMeals', JSON.stringify(soirMeals));
         } catch (error) {
             console.error("Erreur lors de la génération des repas :", error);
         }
     }
+
+    function loadMealsFromLocalStorage() {
+        const storedMidiMeals = localStorage.getItem('midiMeals');
+        const storedSoirMeals = localStorage.getItem('soirMeals');
+    
+        if (storedMidiMeals) {
+            midiMeals = JSON.parse(storedMidiMeals);
+            midiMeals.forEach((meal, index) => {
+                midiRow.appendChild(createMealCell(meal, 'midi', index));
+            });
+        } else {
+            midiMeals = Array(7).fill(''); 
+        }
+    
+        if (storedSoirMeals) {
+            soirMeals = JSON.parse(storedSoirMeals);
+            soirMeals.forEach((meal, index) => {
+                soirRow.appendChild(createMealCell(meal, 'soir', index));
+            });
+        } else {
+            soirMeals = Array(7).fill('');
+        }
+    }
+    
 
     function replaceSingleMeal(rowType, index, tdElement) {
         const currentMeals = [...midiMeals, ...soirMeals];
@@ -118,6 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const semaineActuelle = getCurrentWeekDates();
     title.textContent = "Menu de la semaine du " + semaineActuelle[0] + " au " + semaineActuelle[6];
+
+    loadMealsFromLocalStorage();
 
     generateWeekButton.addEventListener('click', generateWeekMeals);
 
