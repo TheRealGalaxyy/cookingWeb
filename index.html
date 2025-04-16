@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/dist/date-fns.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="index.js"></script>
+    <title>Plat de la semaine</title>
+</head>
+<body>
+
+    <div id="pdfContent">
+        <h1 id="title" style="text-align: center;"></h1>
+
+        <div class="table-responsive">
+            <table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Heure</th>
+                            <th>Lundi</th>
+                            <th>Mardi</th>
+                            <th>Mercredi</th>
+                            <th>Jeudi</th>
+                            <th>Vendredi</th>
+                            <th>Samedi</th>
+                            <th>Dimanche</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="midi">
+                            <td><b>12:00</b></td>
+                        </tr>
+                        <tr id="soir">
+                            <td><b>19:00</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </table>
+          </div>
+    </div>
+
+    <div id="centeredContainer">
+        <button id="generateWeek">Generer les plats</button>
+        <button id="downloadPdf">Télécharger en PDF</button>
+    </div>   
+
+    <div id="popup" style="display:none">
+        <div id="popupContent">
+            <p>Que voulez-vous faire ?</p>
+            <button id="changeMeal">Changer le plat</button>
+            <button id="removeMeal">Supprimer le plat</button>
+            <button id="closePopup">Annuler</button>
+        </div>
+    </div> 
+    
+</body>
+</html>
