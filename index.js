@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialisation
     const semaineActuelle = getCurrentWeekDates();
-    title.textContent = "Menu de la semaine du " + semaineActuelle[0] + " au " + semaineActuelle[6];
+    title.innerHTML = "Menu de la semaine : <br/>" + semaineActuelle[0] + "-" + semaineActuelle[6];
 
     // Charger les données
     initializeMeals();
@@ -158,13 +158,36 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadButton.addEventListener('click', () => {
         const element = document.getElementById('pdfContent');
         const filename = "repas_" + semaineActuelle[0] + "-" + semaineActuelle[6] + ".pdf";
+        
         const opt = {
-            margin: 0.5,
+            margin: [0.3, 0.3, 0.3, 0.3], 
             filename: filename,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
+            image: { 
+                type: 'jpeg', 
+                quality: 1 
+            },
+            html2canvas: { 
+                scale: 3,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.scrollWidth,
+                width: element.scrollWidth + 100,
+                useCORS: true,
+                allowTaint: true
+            },
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait'
+            }
         };
-        html2pdf().set(opt).from(element).save();
+    
+        setTimeout(() => {
+            html2pdf()
+                .set(opt)
+                .from(element)
+                .save()
+                .catch(err => console.error("Erreur de génération PDF :", err));
+        }, 200);
     });
 });
