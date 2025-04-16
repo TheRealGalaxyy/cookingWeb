@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             updateMealsDisplay();
             updateLocalStorage();
+            completedDays();
         } catch (error) {
             console.error("Erreur lors de la génération des repas :", error);
         }
@@ -145,13 +146,40 @@ document.addEventListener('DOMContentLoaded', () => {
         return week;
     }
 
+    function completedDays() {
+        const today = new Date();
+        let weekDay = today.getDay() - 1;
+    
+        if (weekDay < 0) {
+            weekDay = 6;
+        }
+
+        let i = 0
+        for (i; i < weekDay; i++) {
+            const midiCell = midiRow.children[i+1];
+            const soirCell = soirRow.children[i+1];
+            midiCell.style.backgroundColor = '#52bf52'; 
+            soirCell.style.backgroundColor = '#52bf52';
+        }
+        if (i < midiRow.children.length) {
+            const midiCell = midiRow.children[i+1];
+            const soirCell = soirRow.children[i+1];
+            midiCell.style.backgroundColor = '#cc9829'; 
+            soirCell.style.backgroundColor = '#cc9829'; 
+        }
+    }
+
     // Initialisation
     const semaineActuelle = getCurrentWeekDates();
     title.innerHTML = "Menu de la semaine : <br/>" + semaineActuelle[0] + "-" + semaineActuelle[6];
 
     // Charger les données
-    initializeMeals();
-
+    initializeMeals().then(() => {
+        updateMealsDisplay();
+        completedDays();
+        }
+    );
+    
     // Événements
     generateWeekButton.addEventListener('click', generateWeekMeals);
 
